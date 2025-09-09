@@ -59,6 +59,8 @@ ansible -i 01-inventory.ini all -m shell -b -a 'reboot'
 ansible -i 01-inventory.ini all -m copy -b -a 'src=~/hello.txt dest=~/hello.txt mode=0644 owner=tharindu group=tharindu'
 ```
 
+---
+
 ### File Module
 
 ```bash
@@ -89,6 +91,8 @@ ansible -i 01-inventory.ini rhel -b -m dnf -a 'autoremove=true'
 
 ```
 
+---
+
 ### User Module
 
 ```bash
@@ -100,6 +104,8 @@ ansible -i 01-inventory.ini all -b -m user -a 'name=devuser password=<HASHED_PAS
 ansible -i 01-inventory.ini all -b -m user -a 'name=devuser state=absent'
 ```
 
+---
+
 ### Service Module
 
 ```bash
@@ -110,9 +116,13 @@ ansible -i 01-inventory.ini all -b -m service -a 'name=nginx state=stopped enabl
 ansible -i 01-inventory.ini all -b -m service -a 'name=nginx state=restarted'
 ```
 
+---
+
 ### Setup Module
 
 ```bash
 # gathering facts
 ansible -i 01-inventory.ini all -m setup
 ```
+
+---
