@@ -1,0 +1,25 @@
+---
+- name: install nginx on rhel9
+  hosts: rhel
+  become: true
+
+  tasks:
+    - name: install nginx
+      dnf:
+        name: nginx
+        state: latest
+        update_cache: true
+
+    - name: start and enable nginx
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: copy file with owner and permissions
+      copy:
+        src: index.html
+        dest: /usr/share/nginx/html/
+        owner: root
+        group: root
+        mode: "0644"
