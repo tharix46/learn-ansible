@@ -23,3 +23,15 @@
         owner: root
         group: root
         mode: "0644"
+
+    - name: allow http service in firewalld
+      ansible.posix.firewalld:
+        permanent: true
+        immediate: true
+        service: http
+        state: enabled
+      notify: reload firewalld
+
+  handlers:
+    - name: reload firewalld
+      command: firewall-cmd --reload
