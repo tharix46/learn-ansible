@@ -5,19 +5,19 @@
 
   tasks:
     - name: install nginx
-      dnf:
+      ansible.builtin.dnf:
         name: nginx
         state: latest
         update_cache: true
 
     - name: start and enable nginx
-      service:
+      ansible.builtin.service:
         name: nginx
         state: started
         enabled: true
 
     - name: copy file with owner and permissions
-      copy:
+      ansible.builtin.copy:
         src: index.html
         dest: /usr/share/nginx/html/
         owner: root
@@ -34,4 +34,4 @@
 
   handlers:
     - name: reload firewalld
-      command: firewall-cmd --reload
+      ansible.builtin.command: firewall-cmd --reload
