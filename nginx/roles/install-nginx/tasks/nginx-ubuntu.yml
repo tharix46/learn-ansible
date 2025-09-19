@@ -1,0 +1,20 @@
+- name: Install nginx on ubuntu (tasks/nginx-ubuntu.yml)
+  ansible.builtin.apt:
+    name: nginx
+    state: latest
+    update_cache: true
+
+- name: Copy index.html with owner and permissions (tasks/nginx-ubuntu.yml)
+  ansible.builtin.copy:
+    src: index.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: allow port 80 in ufw (tasks/nginx-ubuntu.yml)
+  community.general.ufw:
+    state: enabled
+    rule: allow
+    port: "80"
+    proto: tcp
