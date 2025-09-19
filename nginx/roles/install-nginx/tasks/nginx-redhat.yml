@@ -1,0 +1,21 @@
+- name: Install nginx on RHEL (tasks/nginx-redhat.yml)
+  ansible.builtin.dnf:
+    name: nginx
+    state: latest
+    update_cache: true
+
+- name: Copy index.html with owner and permissions (tasks/nginx-redhat.yml)
+  ansible.builtin.copy:
+    src: index.html
+    dest: /usr/share/nginx/html/index.html
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Allow http service in firewalld (tasks/nginx-redhat.yml)
+  ansible.posix.firewalld:
+    permanent: true
+    immediate: true
+    service: http
+    state: enabled
+  notify: Reload firewalld

@@ -1,0 +1,6 @@
+- name: install-nginx.yml
+  hosts: all
+  become: true
+
+  roles:
+    - install-nginx
