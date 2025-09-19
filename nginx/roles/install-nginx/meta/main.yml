@@ -1,2 +1,3 @@
-author: Tharindu Lakshan
-description: Role to install and configure nginx web server on RHEL and Ubuntu systems
+galaxy_info:
+  author: Tharindu Lakshan
+  description: Role to install and configure nginx web server on RHEL and Ubuntu systems
