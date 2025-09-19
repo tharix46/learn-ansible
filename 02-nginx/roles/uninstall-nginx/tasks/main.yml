@@ -1,0 +1,10 @@
+- name: Stop and disable nginx service (tasks/main.yml)
+  include_tasks: common.yml
+
+- name: Uninstall nginx on RHEL (tasks/main.yml)
+  include_tasks: nginx-redhat.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: Uninstall nginx on Ubuntu (tasks/main.yml)
+  include_tasks: nginx-ubuntu.yml
+  when: ansible_facts['os_family']|lower == 'debian'

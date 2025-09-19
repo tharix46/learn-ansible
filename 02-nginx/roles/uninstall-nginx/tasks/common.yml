@@ -1,0 +1,6 @@
+- name: Stop and disable nginx service (tasks/common.yml)
+  ansible.builtin.service:
+    name: nginx
+    state: stopped
+    enabled: false
+  ignore_errors: true

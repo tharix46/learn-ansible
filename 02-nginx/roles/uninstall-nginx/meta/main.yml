@@ -1,0 +1,3 @@
+galaxy_info:
+  author: Tharindu Lakshan
+  description: Role to uninstall nginx web server on RHEL and Ubuntu systems

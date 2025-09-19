@@ -1,0 +1,6 @@
+- name: uninstall-nginx.yml
+  hosts: all
+  become: true
+
+  roles:
+    - uninstall-nginx

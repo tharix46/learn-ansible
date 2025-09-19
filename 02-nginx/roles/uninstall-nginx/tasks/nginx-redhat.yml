@@ -1,0 +1,18 @@
+- name: Uninstall nginx on RHEL (tasks/nginx-redhat.yml)
+  ansible.builtin.dnf:
+    name: nginx
+    state: absent
+    autoremove: true
+
+- name: Remove index.html (tasks/nginx-redhat.yml)
+  ansible.builtin.file:
+    path: /usr/share/nginx/html/index.html
+    state: absent
+
+- name: Remove http service from firewalld (tasks/nginx-redhat.yml)
+  ansible.posix.firewalld:
+    permanent: yes
+    immediate: yes
+    service: http
+    state: disabled
+  notify: Reload firewalld
