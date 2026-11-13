@@ -30,6 +30,9 @@ ansible -i inventory.ini ubuntu -m ping
 
 # ping all hosts in the inventory file
 ansible -i inventory.ini all -m ping
+
+# because of the ansible.cfg file commands can be shorten
+ansible all -m ping
 ```
 
 ---
@@ -39,6 +42,7 @@ ansible -i inventory.ini all -m ping
 ```bash
 # check uptime
 ansible -i inventory.ini all -m shell -a 'uptime -p'
+ansible -m shell -a 'uptime -p'
 
 # check who is logged in
 ansible -i inventory.ini all -m shell -a 'who'
@@ -123,6 +127,7 @@ ansible -i inventory.ini all -b -m service -a 'name=nginx state=restarted'
 ```bash
 # gathering facts
 ansible -i inventory.ini all -m setup
+ansible -i inventory.ini all -m setup -a "filter=*family*"
 ```
 
 ---
