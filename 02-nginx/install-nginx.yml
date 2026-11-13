@@ -1,4 +1,4 @@
-- name: install-nginx.yml
+- name: Install nginx
   hosts: all
   become: true
 
